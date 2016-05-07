@@ -1,0 +1,30 @@
+  {{#each top10 as |candidate|}}
+    <div class="row u-text-center panel">
+      <div class="col-lg-2 col-lg-offset-3">
+        <h1>
+          <div>
+            {{candidate.totalVotes}}
+          </div>
+          <div class="glyphicon glyphicon-flag u-hand" {{action 'vote' candidate}}/>
+        </h1>
+      </div>
+      <div class="col-lg-2">
+        <a class="candidate-link" href="{{candidate.descriptionUrl}}">
+          <div class="candidate-normal img-rounded" style="background-image:url('{{candidate.imageUrl}}')">
+          </div>
+        </a>
+      </div>
+      <div class="col-lg-2">
+        <h1>{{candidate.fullName}}</h1>
+      </div>
+    </div>
+  {{/each}}
+
+{{#each candidates as |candidate|}}
+  <div class="candidate-micro-wrap">
+    <div class="candidate-micro" style="background-image:url('{{candidate.imageUrl}}')">
+      <span>{{candidate.fullName}}</span>
+    </div>
+  </div>
+{{/each}}
+{{outlet}}

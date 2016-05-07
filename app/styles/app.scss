@@ -1,0 +1,63 @@
+
+* { font-family: 'Montserrat', sans-serif;
+}
+
+.hero-text {
+  font-size: 46px
+}
+
+.u-text-center {
+  text-align: center;
+}
+
+.u-hand {
+  cursor: pointer;
+}
+
+.candidate-link {
+  display: inline-block;
+
+  .candidate-normal {
+    width: 130px;
+    height: 150px;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+  }
+}
+
+.candidate-micro-wrap {
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  overflow: hidden;
+
+  .candidate-micro {
+    width: 75px;
+    height: 75px;
+    overflow: visible;
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding: 5px;
+    transition: transform .25s ease-in-out;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(2);
+      position: absolute;
+      z-index: 100;
+      border: 2px solid white;
+
+      span {
+        display: block;
+      }
+    }
+
+    span {
+      color: white;
+      display: none;
+      font-size: 12px;
+    }
+  }
+}
