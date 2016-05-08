@@ -5,11 +5,11 @@
           <div>
             {{candidate.totalVotes}}
           </div>
-          <div class="glyphicon glyphicon-flag u-hand" {{action 'vote' candidate}}/>
+          <div class="glyphicon glyphicon-ok u-hand {{if candidate.votes.length 'u-green-text'}}" {{action 'vote' candidate}}/>
         </h1>
       </div>
       <div class="col-lg-2">
-        <a class="candidate-link" href="{{candidate.descriptionUrl}}">
+        <a class="candidate-link" href="{{candidate.descriptionUrl}}" target="_blank">
           <div class="candidate-normal img-rounded" style="background-image:url('{{candidate.imageUrl}}')">
           </div>
         </a>
@@ -20,10 +20,12 @@
     </div>
   {{/each}}
 
-{{#each candidates as |candidate|}}
+{{#each model as |candidate|}}
   <div class="candidate-micro-wrap">
     <div class="candidate-micro" style="background-image:url('{{candidate.imageUrl}}')">
       <span>{{candidate.fullName}}</span>
+      <a class="mini-button glyphicon glyphicon-user u-hand mini-left" href="{{candidate.descriptionUrl}}" target="_blank"/>
+      <div class="mini-button glyphicon glyphicon-ok u-hand mini-right {{if candidate.votes.length 'u-green-text'}}" {{action 'vote' candidate}}/>
     </div>
   </div>
 {{/each}}

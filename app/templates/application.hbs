@@ -1,8 +1,30 @@
 <div class="jumbotron">
   <div class="container">
-    {{typed-text blocks=typedBlocks classNames="hero-text"}}
+    <div class="row">
+      <div class="col-xs-12 {{if showingWriteInput 'col-lg-4'}} {{if showingWriteInput 'col-md-5'}} {{if showingWriteInput 'col-sm-6'}}">
+        {{typed-text blocks=typedBlocks classNames="hero-text" finishedTyping="showWriteInput"}}
+      </div>
+      {{#if false}}
+        {{#liquid-if showingWriteInput class="fader col-xs-12 col-lg-8 col-md-7 col-sm-6"}}
+
+          {{input value=searchedName enter="voteForCandidate" classNames="form-control candidate-input"}}
+          <span class="glyphicon glyphicon-ok input-check" aria-hidden="true"></span>
+          <span id="inputSuccess2Status" class="sr-only">(success)</span>
+
+          {{#each suggestedCandidates as |suggestion|}}
+            <div>{{suggestion}}</div>
+          {{/each}}
+
+          <div>
+            <div class="glyphicon gliphicon-ok"/>
+          </div>
+
+        {{/liquid-if}}
+      {{/if}}
+    </div>
   </div>
 </div>
+
 <div class="container">
   {{outlet}}
 </div>

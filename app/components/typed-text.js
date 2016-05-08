@@ -30,7 +30,8 @@ export default Component.extend({
     let blocks = this.get('blocks');
     return blocks.reduce((cur, next)=> {
       return cur.then(()=> this.typeBlock(next));
-    }, RSVP.resolve());
+    }, RSVP.resolve())
+    .finally(()=> this.sendAction('finishedTyping'));
   },
 
   humanSpeed() {

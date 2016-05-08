@@ -2,12 +2,9 @@ import Ember from 'ember';
 const { Controller, computed } = Ember;
 
 export default Controller.extend({
-  top10: computed('candidates', function() {
-    return this.get('candidates').toArray().slice(0,9);
-  }),
 
-  candidates: computed('model.@each.totalVotes', function() {
-    return this.get('model').sortBy('totalVotes').reverse();
+  top10: computed('model', function() {
+    return this.get('model').toArray().slice(0,9);
   }),
 
   actions: {

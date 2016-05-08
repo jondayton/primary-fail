@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Adapter from 'active-model-adapter';
+import config from 'primary-fail/config/environment';
 
 Ember.$.ajaxSetup({
   xhrFields: {
@@ -8,5 +9,5 @@ Ember.$.ajaxSetup({
 });
 
 export default Adapter.extend({
-  host: 'http://localhost:4001'
+  host: config.APP.apiHost
 });

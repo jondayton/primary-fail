@@ -1,7 +1,16 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+const {
+  Route,
+  inject: {
+    service
+  }
+} = Ember;
+
+export default Route.extend({
+  candidates: service(),
+
   model() {
-    return this.store.findAll('candidate');
+    return this.get('candidates.sorted');
   }
 });
