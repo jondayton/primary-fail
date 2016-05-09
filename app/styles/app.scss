@@ -4,6 +4,10 @@
 
 a {
   text-decoration: none !important;
+  color: #888;
+  &:hover {
+    color: #333;
+  }
 }
 
 .hero-text {
@@ -29,12 +33,42 @@ a {
   display: inline-block;
 
   .candidate-normal {
+    position: relative;
     width: 130px;
     height: 150px;
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
+
+    .vote-check {
+      font-size: 52px;
+      margin: auto;
+      opacity: 0;
+      text-align: center;
+      margin-top: 70px;
+      color: white;
+
+      &.u-green-text {
+        opacity: 1 !important;
+      }
+
+      @media (max-width: 768px) {
+        opacity: 0.55;
+      }
+    }
   }
+
+  &:hover .candidate-normal .vote-check {
+    opacity: 0.55;
+  }
+}
+
+.bio {
+  font-size: 20px;
+}
+
+.big-name {
+  color: #333;
 }
 
 .candidate-micro-wrap {
@@ -54,6 +88,10 @@ a {
     transition: transform .25s ease-in-out;
     transform: scale(1);
 
+    .mini-button {
+      display: none;
+    }
+
     &:hover {
       transform: scale(2);
       position: absolute;
@@ -68,39 +106,38 @@ a {
       }
     }
 
-    .mini-button {
-      display: none;
-      background-color: white;
-      position: absolute;
-      top: 52px;
-      height: 20px;
-      border: white 2px solid;
-
-      color: #888;
-
-      &:hover {
-        color: #333;
-        background-color: whitesmoke;
-        border-color: whitesmoke;
-      }
-
-      &.mini-left {
-        left: 0;
-        border-top-right-radius: 2px;
-      }
-
-      &.mini-right {
-        right: 0;
-        border-top-left-radius: 2px;
-      }
-    }
-
     span {
       color: white;
       display: none;
       font-size: 9px;
       line-height: 7px;
     }
+  }
+}
+
+.mini-button {
+  background-color: white;
+  position: absolute;
+  top: 52px;
+  height: 20px;
+  border: white 2px solid;
+
+  color: #888;
+
+  &:hover {
+    color: #333;
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+  }
+
+  &.mini-left {
+    left: 0;
+    border-top-right-radius: 2px;
+  }
+
+  &.mini-right {
+    right: 0;
+    border-top-left-radius: 2px;
   }
 }
 

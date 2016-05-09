@@ -1,32 +1,44 @@
-  {{#each top10 as |candidate|}}
+  {{#each top20 as |candidate|}}
     <div class="row u-text-center panel">
-      <div class="col-lg-2 col-lg-offset-3">
+      <div class="col-sm-2 col-sm-offset-2">
         <h1>
           <div>
             {{candidate.totalVotes}}
           </div>
-          <div class="glyphicon glyphicon-ok u-hand {{if candidate.votes.length 'u-green-text'}}" {{action 'vote' candidate}}/>
         </h1>
       </div>
-      <div class="col-lg-2">
-        <a class="candidate-link" href="{{candidate.descriptionUrl}}" target="_blank">
+      <div class="col-sm-3">
+        <div class="candidate-link u-hand" {{action 'vote' candidate}}>
           <div class="candidate-normal img-rounded" style="background-image:url('{{candidate.imageUrl}}')">
+            <div class="vote-check glyphicon glyphicon-ok {{if candidate.votes.length 'u-green-text'}}"/>
           </div>
-        </a>
+        </div>
       </div>
-      <div class="col-lg-2">
-        <h1>{{candidate.fullName}}</h1>
+      <div class="col-sm-2">
+        <a href="{{candidate.descriptionUrl}}" target="_blank">
+          <h1>
+            <span class="big-name">
+              {{candidate.fullName}}
+            </span>
+            <span class="bio glyphicon glyphicon-user" />
+          </h1>
+        </a>
       </div>
     </div>
   {{/each}}
 
-{{#each model as |candidate|}}
-  <div class="candidate-micro-wrap">
-    <div class="candidate-micro" style="background-image:url('{{candidate.imageUrl}}')">
-      <span>{{candidate.fullName}}</span>
-      <a class="mini-button glyphicon glyphicon-user u-hand mini-left" href="{{candidate.descriptionUrl}}" target="_blank"/>
-      <div class="mini-button glyphicon glyphicon-ok u-hand mini-right {{if candidate.votes.length 'u-green-text'}}" {{action 'vote' candidate}}/>
+{{ember-ic-you crossedTheLine="showAll" triggerDistance=500}}
+
+{{#if showingAll}}
+  {{#each model as |candidate|}}
+    <div class="candidate-micro-wrap">
+      <div class="candidate-micro" style="background-image:url('{{candidate.imageUrl}}')">
+        <span>{{candidate.fullName}}</span>
+        <a class="mini-button glyphicon glyphicon-user u-hand mini-left" href="{{candidate.descriptionUrl}}" target="_blank"/>
+        <div class="mini-button glyphicon glyphicon-ok u-hand mini-right {{if candidate.votes.length 'u-green-text'}}" {{action 'vote' candidate}}/>
+      </div>
     </div>
-  </div>
-{{/each}}
+  {{/each}}
+{{/if}}
+
 {{outlet}}
