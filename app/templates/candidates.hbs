@@ -1,31 +1,36 @@
-  {{#each top20 as |candidate|}}
-    <div class="row u-text-center panel">
-      <div class="col-sm-2 col-sm-offset-2">
-        <h1>
-          <div>
-            {{candidate.totalVotes}}
-          </div>
-        </h1>
-      </div>
-      <div class="col-sm-3">
-        <div class="candidate-link u-hand" {{action 'vote' candidate}}>
-          <div class="candidate-normal img-rounded" style="background-image:url('{{candidate.imageUrl}}')">
-            <div class="vote-check glyphicon glyphicon-ok {{if candidate.votes.length 'u-green-text'}}"/>
-          </div>
+<div class= "row">
+  <div class="col-sm-3 col-sm-offset-4">
+    <h5 class="small text-center panel u-padding-bottom-10">(vote up to 10 times)</h5>
+  </div>
+</div>
+{{#each top20 as |candidate|}}
+  <div class="row u-text-center panel u-padding-bottom-10">
+    <div class="col-sm-2 col-sm-offset-2">
+      <h1>
+        <div>
+          {{candidate.totalVotes}}
+        </div>
+      </h1>
+    </div>
+    <div class="col-sm-3">
+      <div class="candidate-link u-hand" {{action 'vote' candidate}}>
+        <div class="candidate-normal img-rounded" style="background-image:url('{{candidate.imageUrl}}')">
+          <div class="vote-check glyphicon glyphicon-ok {{if candidate.votes.length 'u-green-text'}}"/>
         </div>
       </div>
-      <div class="col-sm-2">
-        <a href="{{candidate.descriptionUrl}}" target="_blank">
-          <h1>
-            <span class="big-name">
-              {{candidate.fullName}}
-            </span>
-            <span class="bio glyphicon glyphicon-user" />
-          </h1>
-        </a>
-      </div>
     </div>
-  {{/each}}
+    <div class="col-sm-2">
+      <a href="{{candidate.descriptionUrl}}" target="_blank">
+        <h1>
+          <span class="big-name">
+            {{candidate.fullName}}
+          </span>
+          <span class="bio glyphicon glyphicon-user" />
+        </h1>
+      </a>
+    </div>
+  </div>
+{{/each}}
 
 {{ember-ic-you crossedTheLine="showAll" triggerDistance=500}}
 
